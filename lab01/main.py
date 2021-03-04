@@ -21,9 +21,11 @@ print(a)
 a,b=1,'2'
 print(a,b)
 
+
 #swap
 a,b=b,a
 print(a,b)
+
 
 a,*b=1,'2',3.,4,5
 print(a,b)
@@ -42,3 +44,63 @@ print(min(2,11,3,4,2),"\n")
 
 a=-1.7
 print(abs(a),math.fabs(a))
+
+
+print('\n\n')
+#krotki
+k=()
+print(type(k))
+
+k=(2) #zrobi inta
+print(type(k))
+
+k=(2,)
+print(type(k))
+
+k=(1,2.3,'3',(4,7),[2,3,4])
+print(len(k))
+
+print(k[0],k[len(k)-1],k[-1])
+
+#niemodyfikowalność krotek
+#k[-1]=7 nie będzie działać
+k[-1][1]=7 #zadziala bo 7 wskoczypod element z listy
+print(k)
+
+
+
+
+#listy
+k=[]
+print(type(k))
+
+k=[2]
+print(type(k))
+
+k=[2,] #przecinek nizcego nie zmieni
+print(type(k))
+print(k[0],k[-1])
+
+#kopie list
+k=[1,2.3,'3',(4,7),[2,3,4]]
+c=k
+c[1]=[7,8,9] #modyfikacja c wplynie na oryginał
+print(c,k)
+print(id(c),id(k))
+
+c=k[:] #kopiowanie płytkie
+c[1]='4,5,6'
+print(c,k)
+print(id(c),id(k))
+
+c[-1][1]='4,5,6' #tu oryginal widzi zmiany, bo odnosimy się do listy w liście (a tego kopii nie mamy)
+print(c,k)
+
+import copy
+c=copy.deepcopy(k)
+c[1]='4,5,6'
+print(c,k)
+print(id(c),id(k))
+
+c[-1][1]='4,5,6' #w tym wypadku jest ok
+print(c,k)
